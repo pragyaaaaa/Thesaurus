@@ -58,5 +58,4 @@ def input_u():
     return
 
 
-# call
 input_u()
