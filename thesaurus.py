@@ -38,15 +38,31 @@ def translate(word):
         return "Word doesn't exist. Reconsider spell check."
 
 
-word_user = input("Enter word: ")
-print(translate(word_user))
-synonyms = input("Satisfies? Or wanna go deeper?: (y/n): ")
-if synonyms == "yes" or synonyms == "y":
-    print(translate_synonyms(word_user))
-elif synonyms == "no" or synonyms == "n":
-    loop = input("Wanna try again?(Y/n): ")
-    if loop == "yes" or loop == "y":
-        word_user = input("Enter word: ")
-        print(translate_synonyms(word_user))
+def output(out):
+    if type(out) == list:
+        for element in out:
+            print(element)
     else:
-        print("Thankyou! Try again.")
+        print(out)
+
+
+def input_u():
+    word_user = input("Enter word: ")
+    result = translate(word_user)
+    output(result)
+    synonyms = input("Satisfied? Or wanna go deeper?: (y/n): ")
+    if synonyms == "yes" or synonyms == "y":
+        result = translate_synonyms(word_user)
+        output(result)
+    elif synonyms == "no" or synonyms == "n":
+        loop = input("Wanna try again?(Y/n): ")
+        if loop == "yes" or loop == "y":
+            word_user = input("Enter word: ")
+            result = translate_synonyms(word_user)
+            output(result)
+        else:
+            print("Thankyou! Try again.")
+    return
+
+
+input_u()
